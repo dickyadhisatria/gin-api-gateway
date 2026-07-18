@@ -101,7 +101,7 @@ go test -v ./...
 
 ## 🧪 Menguji Gateway
 
-Uji autentikasi API Key menggunakan `cURL`:
+Uji autentikasi JWT menggunakan `cURL`:
 
 ```bash
 # Perintah ini akan mengembalikan status 401 Unauthorized
