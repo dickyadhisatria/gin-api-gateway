@@ -50,7 +50,7 @@ gin-api-gateway/
 
 ### 1. Prerequisites
 
-Make sure you have **Go 1.18+** installed on your machine.
+Make sure you have **Go 1.26+** installed on your machine.
 
 ### 2. Installation
 
