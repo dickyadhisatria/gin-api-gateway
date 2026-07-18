@@ -1,0 +1,62 @@
+name: CI and Security Analysis
+
+on:
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: "18 12 * * 0"
+
+jobs:
+  # Job untuk memeriksa keamanan kode (CodeQL)
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: go
+            build-mode: autobuild
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: "/language:${{matrix.language}}"
+
+  # Job untuk Build dan Test proyek Go
+  build-and-test:
+    name: Go Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6 # Diperbaiki ke versi stabil v6
+
+      - name: Set up Go
+        uses: actions/setup-go@v6 # Diperbaiki cukup panggil @v6 agar otomatis dicarikan patch stabil terbaru
+        with:
+          go-version: "1.26"
+
+      - name: Install dependencies
+        run: go mod download
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Test
+        run: go test -v ./...
