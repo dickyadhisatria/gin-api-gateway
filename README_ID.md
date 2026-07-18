@@ -50,7 +50,7 @@ gin-api-gateway/
 
 ### 1. Prasyarat
 
-Pastikan Anda telah menginstal **Go 1.18+** di komputer Anda.
+Pastikan Anda telah menginstal **Go 1.26+** di komputer Anda.
 
 ### 2. Instalasi
 
