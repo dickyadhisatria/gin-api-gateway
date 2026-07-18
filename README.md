@@ -42,7 +42,7 @@ gin-api-gateway/
 ├── .gitignore                      # Tells Git which files to ignore
 ├── go.mod                          # Go module configuration
 ├── go.sum                          # Go module checksums
-├── k6.js                           # K6 load testing script
+├── k6.js                           # K6 load testing script (local, gitignored)
 └── README.md                       # Documentation
 ```
 
