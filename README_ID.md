@@ -42,7 +42,7 @@ gin-api-gateway/
 ├── .gitignore                      # Mengatur file yang diabaikan oleh Git
 ├── go.mod                          # Konfigurasi modul Go
 ├── go.sum                          # Checksum modul Go
-├── k6.js                           # Skrip pengujian beban K6
+├── k6.js                           # Skrip pengujian beban K6 (lokal, gitignored)
 └── README.md                       # Dokumentasi
 ```
 
