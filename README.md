@@ -100,7 +100,7 @@ go test -v ./...
 
 ## 🧪 Testing the Gateway
 
-Test the API Key authentication using `cURL`:
+Test the JWT authentication using `cURL`:
 
 ```bash
 # This will return 401 Unauthorized
