@@ -74,8 +74,7 @@ func TestRateLimiter_Integration_Redis(t *testing.T) {
 	}
 
 	// Clean up
-	keys, _ = rdb.Keys(ctx, "rate_limit:*").Result()
-	for _, key := range keys {
-		rdb.Del(ctx, key)
+	if err := rdb.FlushDB(ctx).Err(); err != nil {
+		t.Fatalf("failed to flush test redis db: %v", err)
 	}
 }
